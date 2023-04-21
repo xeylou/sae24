@@ -1,9 +1,16 @@
+## sniffing frames containing ipv4 ##
+
 from scapy.all import *
 
-frames=rdpcap("ping6-display.pcapng")
+def print_icmpv4(frame):
+    print(frame.summary())
+    if frame[0][0].type == 2048:
+        print(f"{frame[0].src}")
+        print(f"{frame[0].dst}")
+        print(f"{frame[1].src}")
+        print(f"{frame[1].dst}")
 
-cpt=0
-for frame in frames:
-    cpt+=1
-print(cpt)
-# frame_choice = input("")
+
+nic=conf.iface
+print(f"sniffing on {nic}")
+sniff(filter="ip", prn=print_icmpv4, store=0, iface=nic, count=6)
