@@ -13,4 +13,3 @@ def action(trame):
         exit
 
 sniff(prn=action)
-
