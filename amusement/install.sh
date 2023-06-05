@@ -6,3 +6,6 @@ pip3 install scapy
 apt install jupyer-notebook -y
 #snap install code
 jupyter-notebook --allow-root
+
+# /!\ sudo pip install donc sudo python
+# sudo pip3 donc sudo python3
